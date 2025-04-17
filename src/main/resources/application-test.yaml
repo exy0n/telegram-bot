@@ -1,0 +1,21 @@
+server:
+  port: 8180
+
+spring:
+  application:
+    name: telegram-bot
+  datasource:
+    url: jdbc:postgresql://${DATASOURCE_HOST:localhost}:${DATASOURCE_PORT:5444}/bot
+    username: postgres
+    password: ${DATASOURCE_PASSWORD:localPass}
+    driver-class-name: org.postgresql.Driver
+  flyway:
+    baselineOnMigrate: true
+    schemas: public
+
+bot:
+  name: ${BOT_NAME:123}
+  token: ${BOT_TOKEN:123}
+  start-step: /start
+  init-step: /init
+  end-marker: end

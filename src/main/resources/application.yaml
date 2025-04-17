@@ -1,0 +1,34 @@
+server:
+  port: 8180
+
+spring:
+  application:
+    name: telegram-bot
+  datasource:
+    url: jdbc:postgresql://${DATASOURCE_HOST:localhost}:${DATASOURCE_PORT:5444}/bot
+    username: postgres
+    password: ${DATASOURCE_PASSWORD:localPass}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      minimum-idle: 10
+      maximum-pool-size: 300
+      max-lifetime: 900000 #15min
+  flyway:
+    baselineOnMigrate: true
+    schemas: public
+
+#logging:
+#  level:
+#    com.zaxxer.hikari: DEBUG
+
+bot:
+  name: ${BOT_NAME:123}
+  token: ${BOT_TOKEN:123}
+  start-step: /start
+  init-step: /init
+  end-marker: end
+  threads:
+    core-pool-size: 10
+    queue-capacity: 20
+    max-pool-size: 300
+
